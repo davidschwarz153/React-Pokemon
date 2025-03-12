@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
 
 
 export default function Header() {
   return (
-    <div className="pt-10 flex justify-center">
-        <img src="/logo.png" alt="" />
-    </div>
-  )
+    <Link to="/">
+        <div className="pt-10 flex justify-center">
+            <img className="hover:scale-110 transform transition duration-300" src="/logo.png" alt="" />
+        </div>
+    </Link>
+  );
 }

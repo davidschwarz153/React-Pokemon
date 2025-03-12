@@ -15,8 +15,9 @@ export default function MainProvider({
   useEffect(() => {
     const getData = async () => {
       try {
+        
         const res = await axios.get(
-          "https://pokeapi.co/api/v2/pokemon?limit=100"
+          "https://pokeapi.co/api/v2/pokemon?limit=107&offset=386"
         );
         setPkmn(res.data.results);
 
