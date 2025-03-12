@@ -16,18 +16,17 @@ export default function PokemonCard() {
     <section className="flex justify-center mt-10">
       {selectedPokemon ? (
         <div className="text-center space-y-4">
-          <h2 className="text-2xl font-bold uppercase">{selectedPokemon.name}</h2>
 
           <img
             src={selectedPokemon?.sprites?.other?.home?.front_default || "/fallback.png"}
             alt={selectedPokemon.name}
             className="w-48 mx-auto"
           />
-
+            
           <p className="text-lg">ID: {selectedPokemon.order}</p>
-          <p className="text-lg">Base Experience: {selectedPokemon.base_experience}</p>
-          <p className="text-lg">Height: {selectedPokemon.height}</p>
-          <p className="text-lg">Weight: {selectedPokemon.weight}</p>
+          <h2 className="text-2xl font-bold uppercase">{selectedPokemon.name}</h2>
+          
+          
 
           <div className="flex justify-center gap-3 flex-wrap mt-4">
             {selectedPokemon.types.map((t: any) => {
