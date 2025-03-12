@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function BurgerMenu() {
     const burgerMenu: React.FC = () =>{
@@ -23,4 +23,7 @@ export default function BurgerMenu() {
 
     </div>
   )
+
+
+}
 }
