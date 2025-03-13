@@ -1,19 +1,27 @@
+# 🌟 React Pokémon App
 
-# React Pokémon App
+Willkommen zur **React Pokémon App**! 🎮  
+Diese Anwendung zeigt eine interaktive Liste von Pokémon mithilfe der **PokéAPI** – modern, schnell und responsiv mit React umgesetzt.
 
-Willkommen zur React Pokémon App! 🎮  
-Diese Anwendung zeigt eine Liste von Pokémon mithilfe der PokéAPI und wurde mit React umgesetzt.
+---
 
 ## 🔍 Vorschau
 
-<img src="https://raw.githubusercontent.com/davidschwarz153/React-Pokemon/main/src/assets/preview/preview.gif" width="200" style="rounded" />
+<p align="center">
+  <img src="https://raw.githubusercontent.com/davidschwarz153/React-Pokemon/main/src/assets/preview/preview.gif" width="300" style="border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);" alt="App Vorschau" />
+</p>
+
+---
 
 ## ⚙️ Features
 
-- 🔍 Pokémon durchsuchen
-- 📄 Details zu jedem Pokémon
-- 📱 Responsive Design
-- ⚡ Schnelle Performance durch React
+✨ Modernes UI mit React  
+🔍 Pokémon durchsuchen und filtern  
+📄 Details zu jedem Pokémon anzeigen  
+📱 Responsive Design – auch für Mobile  
+⚡ Schnelle Performance durch effiziente Komponentenstruktur
+
+---
 
 ## 🚀 Installation
 
@@ -24,19 +32,24 @@ npm install
 npm start
 ```
 
-Die App läuft dann unter [http://localhost:3000](http://localhost:3000)
-
-## 📦 Technologien
-
-- React
-- React Router
-- Axios
-- PokéAPI
-
-## 🙌 Mitmachen
-
-Pull Requests sind willkommen! Wenn du Bugs findest oder neue Features vorschlagen willst – gerne her damit!
+🔗 Die App läuft unter: [http://localhost:3000](http://localhost:3000)
 
 ---
 
-💡 Viel Spaß beim Ausprobieren!
+## 📦 Technologien
+
+- ⚛️ React
+- 🔀 React Router
+- 🌐 Axios
+- 🎯 PokéAPI
+
+---
+
+## 🤝 Mitmachen
+
+Du hast Ideen oder findest Bugs?  
+**Pull Requests und Issues sind jederzeit willkommen!**
+
+---
+
+## 💡 Viel Spaß beim Ausprobieren!
