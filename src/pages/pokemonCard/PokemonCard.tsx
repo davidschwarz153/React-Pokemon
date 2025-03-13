@@ -22,7 +22,7 @@ export default function PokemonCard() {
                   "/fallback.png"
                 }
                 alt={selectedPokemon.name}
-                className="absolute left-1/2 -translate-x-1/2 -bottom-12 w-48 h-48"
+                className="absolute left-1/2 -translate-x-1/2 -bottom-12 w-48 h-48 hover:scale-110 transform transition duration-300"
               />
             </div>
 
