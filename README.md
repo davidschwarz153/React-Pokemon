@@ -7,9 +7,7 @@ Diese Anwendung zeigt eine interaktive Liste von Pokémon mithilfe der **PokéAP
 
 ## 🔍 Vorschau
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/davidschwarz153/React-Pokemon/main/src/assets/preview/preview.gif" width="300" style="border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);" alt="App Vorschau" />
-</p>
+https://react-pokemon-ten.vercel.app/
 
 ---
 
