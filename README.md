@@ -6,7 +6,7 @@ Diese Anwendung zeigt eine Liste von Pokémon mithilfe der PokéAPI und wurde mi
 
 ## 🔍 Vorschau
 
-<img src="https://raw.githubusercontent.com/davidschwarz153/React-Pokemon/main/src/assets/preview/preview.gif" width="400" />
+<img src="https://raw.githubusercontent.com/davidschwarz153/React-Pokemon/main/src/assets/preview/preview.gif" width="200" style="rounded" />
 
 ## ⚙️ Features
 
