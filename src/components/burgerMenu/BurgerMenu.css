@@ -1,0 +1,27 @@
+.menu-line {
+    background-color: black;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dark-theme .menu-line {
+    background-color: white;
+  }
+  
+  .menu-container {
+    background-color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .dark-theme .menu-container {
+    background-color: black;
+  }
+  
+  .menu-item {
+    color: black;
+    transition: color 0.3s ease;
+  }
+  
+  .dark-theme .menu-item {
+    color: white;
+  }
+  

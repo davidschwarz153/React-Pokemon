@@ -1,20 +1,31 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { mainContext } from "../../context/MainProvider";
 import { Link } from "react-router-dom";
 
 export default function AllPokemon() {
   const { pkmn, pokemon, searchTerm } = useContext(mainContext) as any;
+  const [displayCount, setDisplayCount] = useState(8);
 
   const filtered = pkmn.filter((p: any) =>
     p.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const displayedPokemon = filtered.slice(0, displayCount);
+
+  const handleShowMore = () => {
+    setDisplayCount((prev) => prev + 8);
+  };
+
+  const handleShowLess = () => {
+    setDisplayCount((prev) => Math.max(8, prev - 8));
+  };
 
   return (
     <section className="flex flex-col items-center gap-8 mt-6">
       {/* Kein Suchfeld mehr hier */}
 
       <div className="grid grid-cols-2 gap-x-5 gap-y-10">
-        {filtered.map((p: any) => {
+        {displayedPokemon.map((p: any) => {
           const pokeDetail = pokemon.find(
             (detail: any) => detail.name === p.name
           );
@@ -42,6 +53,25 @@ export default function AllPokemon() {
             </Link>
           );
         })}
+      </div>
+
+      <div className="flex gap-4 mt-4 mb-8">
+        {displayCount < filtered.length && (
+          <button
+            onClick={handleShowMore}
+            className="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+          >
+            Show More
+          </button>
+        )}
+        {displayCount > 10 && (
+          <button
+            onClick={handleShowLess}
+            className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+          >
+            Show Less
+          </button>
+        )}
       </div>
     </section>
   );

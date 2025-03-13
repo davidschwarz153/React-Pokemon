@@ -1,12 +1,20 @@
 .icon-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-  }
-  
-  .icon-button img {
-    width: 24px;
-    height: 24px;
-  }
-  
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-button img {
+  width: 24px;
+  height: 24px;
+  transition: filter 0.3s;
+  filter: brightness(0);
+}
+
+.dark-theme .icon-button img {
+  filter: brightness(0) invert(1);
+}

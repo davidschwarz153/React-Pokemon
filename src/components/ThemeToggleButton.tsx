@@ -11,7 +11,7 @@ const ThemeToggleButton: React.FC<ThemeToggleButtonProps> = ({
 }) => {
   return (
     <button onClick={toggleTheme} className="icon-button">
-      <img src={modeIcon} alt="Toggle Theme" /> +
+      <img src={modeIcon} alt="Toggle Theme" />
     </button>
   );
 };

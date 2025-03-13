@@ -1,11 +1,29 @@
 @import "tailwindcss";
 
-
 body {
-    transition: background-color 0.5s;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.light-theme {
+  background-color: white;
+  color: black;
 }
 
 .dark-theme {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
+}
+
+.theme-toggle-button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-theme .theme-toggle-button {
+  background-color: white;
+  color: black;
 }

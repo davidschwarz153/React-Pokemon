@@ -9,43 +9,58 @@ export default function PokemonCard() {
 
   const selectedPokemon = pokemon.find((p: any) => p.name === name);
 
-
-
-
   return (
-    <section className="flex justify-center mt-10">
-      {selectedPokemon ? (
-        <div className="text-center space-y-4">
+    <section className="flex flex-col items-center">
+      <div className="w-full max-w-md bg-slate-100 min-h-screen relative">
+        {selectedPokemon ? (
+          <div className="px-4 pt-4">
+            <div className="relative mb-20">
+              <div className="w-full h-36 bg-gradient-to-b from-yellow-300 to-orange-400 rounded-3xl" />
+              <img
+                src={
+                  selectedPokemon?.sprites?.other?.home?.front_default ||
+                  "/fallback.png"
+                }
+                alt={selectedPokemon.name}
+                className="absolute left-1/2 -translate-x-1/2 -bottom-12 w-48 h-48"
+              />
+            </div>
 
-          <img
-            src={selectedPokemon?.sprites?.other?.home?.front_default || "/fallback.png"}
-            alt={selectedPokemon.name}
-            className="w-48 mx-auto"
-          />
-            
-          <p className="text-lg">ID: {selectedPokemon.order}</p>
-          <h2 className="text-2xl font-bold uppercase">{selectedPokemon.name}</h2>
-          
-          
+            <div className="text-center">
+              <h1 className="text-2xl font-bold mb-2">
+                #{selectedPokemon.order?.toString().padStart(3, "0")}{" "}
+                {selectedPokemon.name}
+              </h1>
 
-          <div className="flex justify-center gap-3 flex-wrap mt-4">
-            {selectedPokemon.types.map((t: any) => {
-              const typeName = t.type.name;
-              const bgColor = typeColors[typeName] || "bg-gray-200 text-black";
-              return (
-                <p
-                  key={typeName}
-                  className={`px-4 py-1 rounded-full font-semibold capitalize ${bgColor}`}
-                >
-                  {typeName}
-                </p>
-              );
-            })}
+              <div className="flex justify-center gap-3 mb-8">
+                {selectedPokemon.types.map((t: any) => {
+                  const typeName = t.type.name;
+                  const bgColor =
+                    typeColors[typeName] || "bg-gray-200 text-black";
+                  return (
+                    <span
+                      key={typeName}
+                      className={`px-6 py-1 rounded-full font-medium capitalize ${bgColor}`}
+                    >
+                      {typeName}
+                    </span>
+                  );
+                })}
+              </div>
+
+              <div className="mt-8">
+                <h2 className="text-xl font-bold text-yellow-500 mb-4">
+                  ATTACKS AND MOVEMENTS
+                </h2>
+              </div>
+            </div>
           </div>
-        </div>
-      ) : (
-        <p className="text-center text-lg">Loading or Pokémon not found...</p>
-      )}
+        ) : (
+          <p className="text-center text-lg p-4">
+            Loading or Pokémon not found...
+          </p>
+        )}
+      </div>
     </section>
   );
 }
