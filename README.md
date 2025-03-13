@@ -1,41 +1,50 @@
-# React Pokémon App
+# React + TypeScript + Vite
 
-Willkommen zur React Pokémon App! 🎮  
-Diese Anwendung zeigt eine Liste von Pokémon mithilfe der PokéAPI und wurde mit React umgesetzt.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 🔍 Vorschau
+Currently, two official plugins are available:
 
-<img src="https://raw.githubusercontent.com/davidschwarz153/React-Pokemon/main/src/assets/preview/preview.gif" width="400" />
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## ⚙️ Features
+## Expanding the ESLint configuration
 
-- 🔍 Pokémon durchsuchen
-- 📄 Details zu jedem Pokémon
-- 📱 Responsive Design
-- ⚡ Schnelle Performance durch React
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-## 🚀 Installation
+- Configure the top-level `parserOptions` property like this:
 
-```bash
-git clone https://github.com/davidschwarz153/React-Pokemon.git
-cd React-Pokemon
-npm install
-npm start
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-Die App läuft dann unter [http://localhost:3000](http://localhost:3000)
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-## 📦 Technologien
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
 
-- React
-- React Router
-- Axios
-- PokéAPI
-
-## 🙌 Mitmachen
-
-Pull Requests sind willkommen! Wenn du Bugs findest oder neue Features vorschlagen willst – gerne her damit!
-
----
-
-💡 Viel Spaß beim Ausprobieren!
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
+```

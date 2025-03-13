@@ -1,21 +1,84 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { mainContext } from "../../context/MainProvider";
 import { typeColors } from "../../components/typeColors/typeColors";
+import EvolutionCard from "../../components/evolutionCard/EvolutionCard";
+import axios from "axios";
+
+interface EvolutionStage {
+  name: string;
+  evolvesTo?: string;
+  trigger?: string;
+  minLevel?: number;
+  item?: string;
+}
 
 export default function PokemonCard() {
-  const { pokemon } = useContext(mainContext) as any;
+  const { pokemon, addToTeam } = useContext(mainContext) as any;
   const { name } = useParams();
+  const [evolutionChain, setEvolutionChain] = useState<EvolutionStage[]>([]);
+  const [loadingEvo, setLoadingEvo] = useState(true);
 
   const selectedPokemon = pokemon.find((p: any) => p.name === name);
 
+  const handleAddToTeam = () => {
+    addToTeam(selectedPokemon);
+  };
+
+  const parseEvolutionChain = (chain: any): EvolutionStage[] => {
+    const result: EvolutionStage[] = [];
+
+    const traverse = (node: any) => {
+      const from = node.species.name;
+
+      node.evolves_to.forEach((evo: any) => {
+        const to = evo.species.name;
+        const details = evo.evolution_details[0] || {};
+
+        result.push({
+          name: from,
+          evolvesTo: to,
+          trigger: details.trigger?.name || "",
+          minLevel: details.min_level || null,
+          item: details.item?.name || null,
+        });
+
+        traverse(evo);
+      });
+    };
+
+    traverse(chain);
+    return result;
+  };
+
+  useEffect(() => {
+    const fetchEvolutionChain = async () => {
+      if (!name) return;
+      try {
+        setLoadingEvo(true);
+        const speciesRes = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${name}`);
+        const evoUrl = speciesRes.data.evolution_chain.url;
+        const evoRes = await axios.get(evoUrl);
+        const parsed = parseEvolutionChain(evoRes.data.chain);
+        setEvolutionChain(parsed);
+      } catch (err) {
+        console.error("Evolution fetch failed", err);
+        setEvolutionChain([]);
+      } finally {
+        setLoadingEvo(false);
+      }
+    };
+
+    fetchEvolutionChain();
+  }, [name]);
+
   return (
     <section className="flex flex-col items-center">
-      <div className="w-full max-w-md  min-h-screen relative">
+      <div className="w-full max-w-md min-h-screen relative">
         {selectedPokemon ? (
           <div className="px-4 pt-4">
             <div className="relative mb-20">
-              <div className="w-full h-36 bg-gradient-to-b from-yellow-300 to-orange-400 rounded-3xl" />
+              <div className="w-full h-36 bg-gradient-to-b from-yellow-300 to-orange-400 rounded-3xl shadow-lg" />
               <img
                 src={
                   selectedPokemon?.sprites?.other?.home?.front_default ||
@@ -32,11 +95,10 @@ export default function PokemonCard() {
                 {selectedPokemon.name}
               </h1>
 
-              <div className="flex justify-center gap-3 mb-8">
+              <div className="flex justify-center gap-3 mb-6">
                 {selectedPokemon.types.map((t: any) => {
                   const typeName = t.type.name;
-                  const bgColor =
-                    typeColors[typeName] || "bg-gray-200 text-black";
+                  const bgColor = typeColors[typeName] || "bg-gray-200 text-black";
                   return (
                     <span
                       key={typeName}
@@ -48,12 +110,28 @@ export default function PokemonCard() {
                 })}
               </div>
 
+              <button
+                onClick={handleAddToTeam}
+                className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-full shadow-md transition duration-300 mb-6"
+              >
+                ➕ Add to My Team
+              </button>
+
+              {/* Evolution Section */}
+              <div className="mb-6">
+                <h2 className="font-semibold text-lg mb-2">Evolution Chain</h2>
+                {loadingEvo ? (
+                  <p>Loading evolution data...</p>
+                ) : evolutionChain.length > 0 ? (
+                  <EvolutionCard chain={evolutionChain} />
+                ) : (
+                  <p>No evolution data available.</p>
+                )}
+              </div>
             </div>
           </div>
         ) : (
-          <p className="text-center text-lg p-4">
-            Loading or Pokémon not found...
-          </p>
+          <p className="text-center text-lg p-4">Loading or Pokémon not found...</p>
         )}
       </div>
     </section>

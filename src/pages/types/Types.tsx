@@ -52,7 +52,7 @@ export default function Types() {
 
       <div className="flex flex-wrap justify-center gap-4">
         {filteredPokemon.map((p: any) => (
-          <Link key={p.name} to={`/${p.name}`}>
+          <Link key={p.name} to={`/pokemon/${p.name}`}>
 
           <div
             key={p.id}

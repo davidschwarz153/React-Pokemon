@@ -8,15 +8,18 @@ import "./index.css";
 import Home from "./pages/Home";
 import Layout from "./layout/Layout";
 import PokemonCard from "./pages/pokemonCard/PokemonCard";
-import  { useState } from "react";
 import Types from "./pages/types/Types";
+import MyTeam from "./pages/myTeam/MyTeam";
+import NotFound from "./pages/notFound/NotFound"; 
+
+import { useState } from "react";
 
 export default function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const toggleTheme = () => {
-    setIsDarkTheme((prevTheme) => {
-      const newTheme = !prevTheme;
+    setIsDarkTheme((prev) => {
+      const newTheme = !prev;
       document.body.classList.toggle("dark-theme", newTheme);
       document.body.classList.toggle("light-theme", !newTheme);
       return newTheme;
@@ -27,8 +30,10 @@ export default function App() {
     createRoutesFromElements(
       <Route path="/" element={<Layout toggleTheme={toggleTheme} />}>
         <Route index element={<Home />} />
-        <Route path="/:name" element={<PokemonCard />} />
-        <Route path="/types" element={<Types/>}/>
+        <Route path="pokemon/:name" element={<PokemonCard />} />
+        <Route path="types" element={<Types />} />
+        <Route path="my-team" element={<MyTeam />} />
+        <Route path="*" element={<NotFound />} /> 
       </Route>
     )
   );
