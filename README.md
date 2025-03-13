@@ -1,50 +1,55 @@
-# React + TypeScript + Vite
+# 🌟 React Pokémon App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Willkommen zur **React Pokémon App**! 🎮  
+Diese Anwendung zeigt eine interaktive Liste von Pokémon mithilfe der **PokéAPI** – modern, schnell und responsiv mit React umgesetzt.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔍 Vorschau
 
-## Expanding the ESLint configuration
+<p align="center">
+  <img src="https://raw.githubusercontent.com/davidschwarz153/React-Pokemon/main/src/assets/preview/preview.gif" width="300" style="border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);" alt="App Vorschau" />
+</p>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## ⚙️ Features
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+✨ Modernes UI mit React  
+🔍 Pokémon durchsuchen und filtern  
+📄 Details zu jedem Pokémon anzeigen  
+📱 Responsive Design – auch für Mobile  
+⚡ Schnelle Performance durch effiziente Komponentenstruktur
+
+---
+
+## 🚀 Installation
+
+```bash
+git clone https://github.com/davidschwarz153/React-Pokemon.git
+cd React-Pokemon
+npm install
+npm start
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+🔗 Die App läuft unter: [http://localhost:3000](http://localhost:3000)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+---
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 📦 Technologien
+
+- ⚛️ React
+- 🔀 React Router
+- 🌐 Axios
+- 🎯 PokéAPI
+
+---
+
+## 🤝 Mitmachen
+
+Du hast Ideen oder findest Bugs?  
+**Pull Requests und Issues sind jederzeit willkommen!**
+
+---
+
+## 💡 Viel Spaß beim Ausprobieren!
