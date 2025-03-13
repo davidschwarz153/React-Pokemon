@@ -8,7 +8,7 @@ import "./index.css";
 import Home from "./pages/Home";
 import Layout from "./layout/Layout";
 import PokemonCard from "./pages/pokemonCard/PokemonCard";
-import React, { useState } from "react";
+import  { useState } from "react";
 import Types from "./pages/types/Types";
 
 export default function App() {
