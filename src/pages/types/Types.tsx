@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { mainContext } from "../../context/MainProvider";
 import { typeColors } from "../../components/typeColors/typeColors";
+import { Link } from "react-router-dom";
 
 export default function Types() {
   const {
@@ -51,27 +52,30 @@ export default function Types() {
 
       <div className="flex flex-wrap justify-center gap-4">
         {filteredPokemon.map((p: any) => (
+          <Link key={p.name} to={`/${p.name}`}>
+
           <div
             key={p.id}
             className="bg-white rounded-lg shadow p-3 w-40 flex flex-col items-center text-center"
-          >
+            >
             <img
               src={p.sprites.other?.home?.front_default}
               alt={p.name}
               className="w-20 h-20 mb-2 hover:scale-110 transform transition duration-300"
-            />
+              />
             <h4 className="capitalize font-bold mb-1">{p.name}</h4>
             <div className="text-sm flex flex-wrap justify-center gap-1">
               {p.types.map((t: any) => (
                 <span
-                  key={t.slot}
-                  className={`px-2 py-1 text-xs rounded-full ${typeColors[t.type.name]}`}
+                key={t.slot}
+                className={`px-2 py-1 text-xs rounded-full ${typeColors[t.type.name]}`}
                 >
                   {t.type.name}
                 </span>
               ))}
             </div>
           </div>
+              </Link>
         ))}
       </div>
     </div>

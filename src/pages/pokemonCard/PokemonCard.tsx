@@ -48,11 +48,6 @@ export default function PokemonCard() {
                 })}
               </div>
 
-              <div className="mt-8">
-                <h2 className="text-xl font-bold text-yellow-500 mb-4">
-                  ATTACKS AND MOVEMENTS
-                </h2>
-              </div>
             </div>
           </div>
         ) : (
