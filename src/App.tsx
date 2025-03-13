@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Layout from "./layout/Layout";
 import PokemonCard from "./pages/pokemonCard/PokemonCard";
 import React, { useState } from "react";
+import Types from "./pages/types/Types";
 
 export default function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -27,6 +28,7 @@ export default function App() {
       <Route path="/" element={<Layout toggleTheme={toggleTheme} />}>
         <Route index element={<Home />} />
         <Route path="/:name" element={<PokemonCard />} />
+        <Route path="/types" element={<Types/>}/>
       </Route>
     )
   );

@@ -8,18 +8,18 @@ export default function MainProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [pkmn, setPkmn] = useState<any[]>([]);
+  const [allPokemon, setAllPokemon] = useState<any[]>([]);
   const [pokemon, setPokemon] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedType, setSelectedType] = useState("");
 
   useEffect(() => {
     const getData = async () => {
       try {
-        
         const res = await axios.get(
           "https://pokeapi.co/api/v2/pokemon?limit=107&offset=386"
         );
-        setPkmn(res.data.results);
+        setAllPokemon(res.data.results);
 
         const pokemonDetails = await Promise.all(
           res.data.results.map(async (p: any) => {
@@ -27,7 +27,6 @@ export default function MainProvider({
             return detailRes.data;
           })
         );
-
         setPokemon(pokemonDetails);
       } catch (err) {
         console.error("Fetch failed: ", err);
@@ -37,8 +36,25 @@ export default function MainProvider({
     getData();
   }, []);
 
+  const filteredPokemon = pokemon.filter((p: any) => {
+    const matchesName = p.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesType =
+      selectedType === "" || p.types.some((t: any) => t.type.name === selectedType);
+    return matchesName && matchesType;
+  });
+
   return (
-    <mainContext.Provider value={{ pkmn, pokemon, searchTerm, setSearchTerm }}>
+    <mainContext.Provider
+      value={{
+        allPokemon,
+        pokemon,
+        filteredPokemon,
+        searchTerm,
+        setSearchTerm,
+        selectedType,
+        setSelectedType,
+      }}
+    >
       {children}
     </mainContext.Provider>
   );

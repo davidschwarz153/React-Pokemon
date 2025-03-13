@@ -3,10 +3,10 @@ import { mainContext } from "../../context/MainProvider";
 import { Link } from "react-router-dom";
 
 export default function AllPokemon() {
-  const { pkmn, pokemon, searchTerm } = useContext(mainContext) as any;
+  const { allPokemon, pokemon, searchTerm } = useContext(mainContext) as any;
   const [displayCount, setDisplayCount] = useState(8);
 
-  const filtered = pkmn.filter((p: any) =>
+  const filtered = allPokemon.filter((p: any) =>
     p.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 

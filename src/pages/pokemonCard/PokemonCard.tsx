@@ -11,7 +11,7 @@ export default function PokemonCard() {
 
   return (
     <section className="flex flex-col items-center">
-      <div className="w-full max-w-md bg-slate-100 min-h-screen relative">
+      <div className="w-full max-w-md  min-h-screen relative">
         {selectedPokemon ? (
           <div className="px-4 pt-4">
             <div className="relative mb-20">

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./BurgerMenu.css";
+import { Link } from "react-router-dom";
 
 export default function BurgerMenu() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -9,11 +10,13 @@ export default function BurgerMenu() {
   };
 
   return (
+    <Link to="/types">
+
     <div className="relative">
       <button
         onClick={toggleMenu}
         className="p-2 rounded-md border focus:outline-none focus:ring focus:ring-orange-400"
-      >
+        >
         <div className="space-y-1">
           <div className="w-6 h-0.5 menu-line" />
           <div className="w-6 h-0.5 menu-line" />
@@ -37,5 +40,6 @@ export default function BurgerMenu() {
         </div>
       )}
     </div>
+      </Link>
   );
 }
