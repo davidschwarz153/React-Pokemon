@@ -18,6 +18,7 @@ export default function PokemonCard() {
   const { name } = useParams();
   const [evolutionChain, setEvolutionChain] = useState<EvolutionStage[]>([]);
   const [loadingEvo, setLoadingEvo] = useState(true);
+  const [showShiny, setShowShiny] = useState(false);
 
   const selectedPokemon = pokemon.find((p: any) => p.name === name);
 
@@ -27,14 +28,11 @@ export default function PokemonCard() {
 
   const parseEvolutionChain = (chain: any): EvolutionStage[] => {
     const result: EvolutionStage[] = [];
-
     const traverse = (node: any) => {
       const from = node.species.name;
-
       node.evolves_to.forEach((evo: any) => {
         const to = evo.species.name;
         const details = evo.evolution_details[0] || {};
-
         result.push({
           name: from,
           evolvesTo: to,
@@ -42,11 +40,9 @@ export default function PokemonCard() {
           minLevel: details.min_level || null,
           item: details.item?.name || null,
         });
-
         traverse(evo);
       });
     };
-
     traverse(chain);
     return result;
   };
@@ -62,13 +58,11 @@ export default function PokemonCard() {
         const parsed = parseEvolutionChain(evoRes.data.chain);
         setEvolutionChain(parsed);
       } catch (err) {
-        console.error("Evolution fetch failed", err);
         setEvolutionChain([]);
       } finally {
         setLoadingEvo(false);
       }
     };
-
     fetchEvolutionChain();
   }, [name]);
 
@@ -81,8 +75,9 @@ export default function PokemonCard() {
               <div className="w-full h-36 bg-gradient-to-b from-yellow-300 to-orange-400 rounded-3xl shadow-lg" />
               <img
                 src={
-                  selectedPokemon?.sprites?.other?.home?.front_default ||
-                  "/fallback.png"
+                  showShiny
+                    ? selectedPokemon?.sprites?.other?.home?.front_shiny
+                    : selectedPokemon?.sprites?.other?.home?.front_default
                 }
                 alt={selectedPokemon.name}
                 className="absolute left-1/2 -translate-x-1/2 -bottom-12 w-48 h-48 hover:scale-110 transform transition duration-300"
@@ -91,8 +86,7 @@ export default function PokemonCard() {
 
             <div className="text-center">
               <h1 className="text-2xl font-bold mb-2">
-                #{selectedPokemon.order?.toString().padStart(3, "0")}{" "}
-                {selectedPokemon.name}
+                #{selectedPokemon.order?.toString().padStart(3, "0")} {selectedPokemon.name}
               </h1>
 
               <div className="flex justify-center gap-3 mb-6">
@@ -110,14 +104,26 @@ export default function PokemonCard() {
                 })}
               </div>
 
-              <button
-                onClick={handleAddToTeam}
-                className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-full shadow-md transition duration-300 mb-6"
-              >
-                ➕ Add to My Team
-              </button>
+              <div className="flex justify-center gap-3 mb-6">
+                <button
+                  onClick={() => setShowShiny((prev) => !prev)}
+                  className={`px-4 py-2 rounded-full font-semibold shadow-md transition ${
+                    showShiny
+                      ? "bg-yellow-400 hover:bg-yellow-500 text-black"
+                      : "bg-gray-700 hover:bg-gray-800 text-white"
+                  }`}
+                >
+                  {showShiny ? "✨ Show Default" : "✨ Show Shiny"}
+                </button>
 
-              {/* Evolution Section */}
+                <button
+                  onClick={handleAddToTeam}
+                  className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-full shadow-md transition duration-300"
+                >
+                  ➕ Add to My Team
+                </button>
+              </div>
+
               <div className="mb-6">
                 <h2 className="font-semibold text-lg mb-2">Evolution Chain</h2>
                 {loadingEvo ? (

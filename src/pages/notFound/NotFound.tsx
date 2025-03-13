@@ -13,7 +13,7 @@ export default function NotFound() {
   };
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen text-center px-4 bg-gradient-to-br from-yellow-100 to-orange-100">
+    <section className="flex flex-col items-center justify-center  text-center px-4 ">
       <div className="relative">
         <img
           src="https://img.pokemondb.net/artwork/large/bidoof.jpg"
