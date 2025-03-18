@@ -1,53 +1,61 @@
-# 🌟 React Pokémon App
 
-Willkommen zur **React Pokémon App**! 🎮  
-Diese Anwendung zeigt eine interaktive Liste von Pokémon mithilfe der **PokéAPI** – modern, schnell und responsiv mit React umgesetzt.
+# 🎬 MovieDB
+
+Willkommen bei **MovieDB**! 🍿  
+Eine einfache und moderne Movie-Datenbank-App, die mit **React** und der **TMDb-API** erstellt wurde. Entdecke deine Lieblingsfilme, sortiere sie und finde neue Empfehlungen – schnell, responsive und benutzerfreundlich!
 
 ---
 
 ## 🔍 Vorschau
 
-https://react-pokemon-ten.vercel.app/
+
 
 ---
 
 ## ⚙️ Features
 
-✨ Modernes UI mit React  
-🔍 Pokémon durchsuchen und filtern  
-📄 Details zu jedem Pokémon anzeigen  
-📱 Responsive Design – auch für Mobile  
-⚡ Schnelle Performance durch effiziente Komponentenstruktur
+✨ Benutzerfreundliches UI mit React  
+🔍 Filme nach Titel durchsuchen  
+📊 Sortiere Filme nach:
+- Neueste zuerst
+- Älteste zuerst
+- Höchste Bewertungen
+- Alphabetisch (A-Z, Z-A)
+🎥 Filmposter, Titel und Bewertungen anzeigen  
+🌟 Bestbewertete Filme abrufen  
+📱 Optimiert für Mobile – auch unterwegs ein tolles Erlebnis
 
 ---
 
 ## 🚀 Installation
 
 ```bash
-git clone https://github.com/davidschwarz153/React-Pokemon.git
-cd React-Pokemon
+git clone https://github.com/yourusername/movie-db.git
+cd movie-db
 npm install
 npm start
 ```
 
-🔗 Die App läuft unter: [http://localhost:3000](http://localhost:3000)
+🔗 Die App läuft unter: [http://localhost:5173](http://localhost:5173)
 
 ---
 
 ## 📦 Technologien
 
 - ⚛️ React
-- 🔀 React Router
+- 📝 TypeScript
 - 🌐 Axios
-- 🎯 PokéAPI
+- 🎨 Tailwind CSS
+- 🔄 React Router
+- 🎬 TMDb API
 
 ---
 
 ## 🤝 Mitmachen
 
-Du hast Ideen oder findest Bugs?  
+Hast du Ideen, Anmerkungen oder gefunden Bugs?  
 **Pull Requests und Issues sind jederzeit willkommen!**
 
 ---
 
-## 💡 Viel Spaß beim Ausprobieren!
+## 💡 Viel Spaß beim Entdecken der Filme!
